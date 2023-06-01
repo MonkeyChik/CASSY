@@ -12,7 +12,7 @@ function sendMessage() {
     displayMessage(userMessage, "user");
 
     // Make a request to the OpenAI model
-    fetch('/api/chat', {
+    fetch('/api/api-chat', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
