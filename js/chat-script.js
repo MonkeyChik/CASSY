@@ -40,7 +40,7 @@ function sendMessage() {
         // Display the bot's response in the chat log
         displayMessage(botResponse, "bot");
 
-        sendButton.disabled = "false";
+        sendButton.disabled = false;
     })
     .catch(error => {
         console.error('Error:', error);
