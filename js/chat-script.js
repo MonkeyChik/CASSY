@@ -3,15 +3,29 @@ const messageInput = document.getElementById("message-input");
 const sendButton = document.getElementById("send-button");
 
 sendButton.addEventListener("click", sendMessage);
+messageInput.addEventListener("input", function() {
+    if (messageInput.value.trim() !== "") {
+        sendButton.disabled = false;
+    } else {
+        sendButton.disabled = true;
+    }
+});
 
 function sendMessage() {
-    const userMessage = messageInput.value;
-    messageInput.value = "";
+    const userMessage = messageInput.value.trim();
 
-    // Display the user's message in the chat log
+    if (userMessage === "") {
+        //Display an error message or handle the case when a blank message is entered
+        return;
+    }
+
+    messageInput.value = "";
+    sendButton.disabled = true;
+
+    //Display the user's message in the chat log
     displayMessage(userMessage, "user");
 
-    // Make a request to the OpenAI model
+    //Make a request to the OpenAI model
     fetch('/api/api-chat', {
         method: 'POST',
         headers: {
@@ -25,6 +39,8 @@ function sendMessage() {
 
         // Display the bot's response in the chat log
         displayMessage(botResponse, "bot");
+
+        sendButton.disabled = "false";
     })
     .catch(error => {
         console.error('Error:', error);
@@ -32,9 +48,9 @@ function sendMessage() {
 }
 
 function displayMessage(message, sender) {
-    const messageElement = document.createElement("div");
-    messageElement.classList.add(sender);
-    messageElement.textContent = message;
-    chatLog.appendChild(messageElement);
-    chatLog.scrollTop = chatLog.scrollHeight;
+  const messageElement = document.createElement("div");
+  messageElement.classList.add(sender);
+  messageElement.textContent = message;
+  chatLog.appendChild(messageElement);
+  chatLog.scrollTop = chatLog.scrollHeight;
 }
