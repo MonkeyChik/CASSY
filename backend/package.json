@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "AI \"Professionals\" to assist with whatever you may need",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MonkeyChik/CASSY.git"
+  },
+  "author": "MonkeyChik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MonkeyChik/CASSY/issues"
+  },
+  "homepage": "https://github.com/MonkeyChik/CASSY",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.2.2"
+  }
+}
